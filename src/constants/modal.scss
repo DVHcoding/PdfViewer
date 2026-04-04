@@ -1,0 +1,138 @@
+@import './styles';
+
+%modal {
+  @extend %open;
+  @extend %closed;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: $modal-z-index;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--modal-negative-space);
+
+  .modal-container {
+    .wrapper {
+      .modal-content {
+        padding: 10px;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 13px;
+
+    &.modal-footer {
+      padding: 16px;
+      margin: 0;
+      border-top: 1px solid var(--divider);
+    }
+
+    .modal-button {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 6px 18px;
+      margin-top: 8px;
+      width: auto;
+      width: fit-content;
+      border-radius: 4px;
+      height: 30px;
+      cursor: pointer;
+
+      &.cancel {
+        color: var(--secondary-button-text);
+        border: solid 1px var(--secondary-button-text);
+        &:hover {
+          background-color: var(--document-background-color);
+          color: var(--secondary-button-hover);
+          border: solid 1px var(--secondary-button-hover);
+        }
+      }
+
+      &.confirm {
+        margin-left: 4px;
+        color: var(--primary-button-text);
+        font-weight: 600;
+        background: var(--primary-button);
+
+        &:hover {
+          background: var(--primary-button-hover);
+        }
+
+        &.disabled {
+          background: var(--primary-button) !important;
+          opacity: 0.5;
+        }
+      }
+
+      &.secondary-btn-custom {
+        border-radius: 4px;
+        border: 1px solid var(--primary-button);
+        color: var(--primary-button);
+        padding: 2px 20px 4px;
+        cursor: pointer;
+        background-color: white;
+
+        &:hover {
+          color: var(--secondary-button-hover);
+        }
+      }
+
+      @include mobile {
+        padding: 23px 8px;
+      }
+    }
+  }
+
+  .swipe-indicator {
+    background: var(--divider);
+    border-radius: 2px;
+    height: 4px;
+    width: 38px;
+    position: absolute;
+    top: 12px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    @include tablet-and-desktop {
+      display: none;
+    }
+  }
+}
+
+%modal-shared-container-style {
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px 0px var(--document-box-shadow);
+  background: var(--component-background);
+  overflow-y: auto;
+  max-height: 100%;
+
+  @include small-browser-height {
+    // show scroll bar when height of screen is very small
+    // need to change justify content or else we won't be able to scroll to top
+    overflow: auto;
+    max-height: 100%;
+  }
+}
+
+%modal-shared-container-style-mobile {
+  @include mobile {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    padding-top: 4px;
+    min-width: 100px;
+  }
+}

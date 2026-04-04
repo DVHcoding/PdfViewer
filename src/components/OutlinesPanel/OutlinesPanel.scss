@@ -1,0 +1,52 @@
+.OutlinesPanel {
+  .bookmark-outline-single-container {
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .bookmark-outline-row {
+    padding-top: 6px;
+  }
+
+  .msg-no-bookmark-outline {
+    margin-top: 6px;
+  }
+
+  &.modular-ui-panel {
+    .bookmark-outline-single-container {
+
+      &.selected,
+      &.hover {
+        border: 1px solid var(--outline-selected-border);
+      }
+
+      .bookmark-outline-more-button.contextMenuOpen {
+        display: flex;
+
+        .Icon {
+          color: var(--blue-5);
+        }
+      }
+
+      &.default:hover:not(.selected),
+      &.default.hover:not(.selected) {
+        background: none;
+      }
+
+      &:focus-visible {
+        outline: var(--focus-visible-outline) !important;
+      }
+
+      .bookmark-outline-input:active {
+        border-color: var(--focus-border)
+      }
+    }
+  }
+}
+
+.Panel.OutlinesPanel {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  flex: 1;
+  flex-direction: column;
+}

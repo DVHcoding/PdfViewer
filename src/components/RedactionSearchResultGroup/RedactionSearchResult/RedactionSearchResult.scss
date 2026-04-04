@@ -1,0 +1,34 @@
+.redaction-search-result {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: var(--component-background);
+  border: solid 1px transparent;
+  border-radius: 4px;
+  box-shadow: 0px 0px 3px var(--document-box-shadow);
+  margin: 8px 0px;
+
+  .Icon {
+    svg {
+      transform: scale(1.2);
+      padding-top: 2px;
+    }
+  }
+
+  .search-value {
+    word-break: break-all;
+    color: var(--secondary-button-text);
+    font-weight: bold;
+  }
+
+  &.active {
+    background-color: transparent !important;
+    border: solid 1px var(--focus-border);
+  }
+}
+
+.redaction-search-result-info {
+  font-size: 13px;
+  color: var(--text-color);
+}
+

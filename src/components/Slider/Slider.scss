@@ -1,0 +1,92 @@
+@import '../../constants/styles';
+
+.slider {
+  @include mobile {
+    margin-top: 6px;
+  }
+
+  input {
+    &:focus {
+      outline: none;
+      border: 1px solid var(--slider-input-focus);
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  svg {
+    height: var(--slider-svg-hieght);
+    cursor: pointer;
+  }
+
+  .slider-input-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .slider-input-field {
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    height: 28px;
+    width: 50px;
+    text-align: center;
+
+    &.is-editing {
+      border-color: var(--focus-border)
+    }
+
+    @include mobile {
+      width: 79px;
+      height: 32px;
+    }
+  }
+
+  .slider-property {
+    &:nth-child(n+2) {
+      margin-top: 8px;
+    }
+    margin-bottom: 4px;
+  }
+
+  .slider-element-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: -5px;
+
+    .slider-value {
+      min-width: 41px;
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+    }
+
+    svg {
+      // Actual width of svg
+      // Very important. CSS behaves strangely without it.
+      width: 148px;
+      flex: 7;
+      circle {
+        fill: var(--slider-filled);
+      }
+
+      line:nth-child(1) {
+        stroke: var(--slider-filled);
+      }
+
+      line:nth-child(2) {
+        stroke: var(--slider-background);
+      }
+
+      @include mobile {
+        line {
+          stroke-width: 4;
+        }
+      }
+    }
+  }
+}

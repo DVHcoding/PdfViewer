@@ -1,0 +1,84 @@
+@import "../../constants/styles";
+@import "../../constants/modal";
+
+.EditKeyboardShortcutModal.Modal {
+  @extend %modal;
+
+  .container {
+    @extend %modal-shared-container-style;
+    @extend %modal-shared-container-style-mobile;
+
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height: 320px;
+
+    .header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 16px;
+      font-size: 16px;
+      font-weight: bold;
+      align-items: center;
+    }
+
+    .body {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      position: relative;
+
+      .press-key-note {
+        font-weight: bold;
+      }
+
+      .keyboard-shortcut {
+        margin-top: 16px;
+        height: 100%;
+        color: var(--gray-7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--gray-2);
+        border-radius: 4px;
+
+        span:not(:last-child) {
+          margin-right: 8px;
+        }
+      }
+
+      .conflict-warning {
+        position: absolute;
+        bottom: 50px;
+        font-size: 13px;
+        color: var(--red);
+        width: calc(100% - 32px);
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    .divider {
+      height: 1px;
+      width: 100%;
+      background: var(--divider);
+    }
+
+    .footer {
+      padding: 16px;
+      margin-top: 0px;
+
+      .modal-button {
+        height: 32px;
+        margin: 0px;
+        font-weight: unset;
+
+        .disabled span, &.disabled span {
+          color: var(--gray-0) !important;
+        }
+      }
+    }
+  }
+}
