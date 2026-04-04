@@ -175,12 +175,13 @@ const TextPopup = ({ t, selectedTextQuads }) => {
             />
             <ActionButton
               className="main-menu-button"
-              dataElement="helloWorldButton" // <-- Tên này phải TRÙNG KHỚP với tên trong initialState.js
+              dataElement="extensionButton"
               label={isRightClickAnnotationPopupEnabled ? 'Extension' : ''}
               title={!isRightClickAnnotationPopupEnabled ? 'Extension' : ''}
-              img="ic_extension_24px" // Bạn có thể đổi tên icon thành icon khác nếu muốn
+              img="ic_extension_24px"
               onClick={() => {
-                console.log('Hello World');
+                dispatch(actions.openElement(DataElements.EXTENSION_MODAL));
+                dispatch(actions.closeElement(DataElements.TEXT_POPUP));
               }}
               role="option"
             />

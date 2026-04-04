@@ -9,7 +9,9 @@ const ZoomOverlay = lazy(() => import('components/ZoomOverlay'));
 const PageManipulationOverlay = lazy(() => import('components/PageManipulationOverlay'));
 const AnnotationContentOverlay = lazy(() => import('components/AnnotationContentOverlay'));
 const ThumbnailMoreOptionsPopup = lazy(() => import('src/components/LeftPanelOverlay/ThumbnailMoreOptionsPopup'));
-const ThumbnailMoreOptionsPopupSmall = lazy(() => import('src/components/LeftPanelOverlay/ThumbnailMoreOptionsPopupSmall'));
+const ThumbnailMoreOptionsPopupSmall = lazy(
+  () => import('src/components/LeftPanelOverlay/ThumbnailMoreOptionsPopupSmall'),
+);
 
 // Popups
 const AnnotationPopup = lazy(() => import('components/AnnotationPopup'));
@@ -34,6 +36,7 @@ const PasswordModal = lazy(() => import('components/PasswordModal'));
 const CreateStampModal = lazy(() => import('components/CreateStampModal'));
 const PageReplacementModal = lazy(() => import('components/PageReplacementModal'));
 const LinkModal = lazy(() => import('components/LinkModal'));
+const ExtensionModal = lazy(() => import('components/ExtensionModal'));
 const FilterAnnotModal = lazy(() => import('components/FilterAnnotModal'));
 const PageRedactionModal = lazy(() => import('components/PageRedactionModal'));
 const CalibrationModal = lazy(() => import('components/CalibrationModal'));
@@ -66,7 +69,6 @@ const RubberStampPanel = lazy(() => import('components/RubberStampPanel'));
 const RedactionPanel = lazy(() => import('components/RedactionPanel'));
 const PortfolioPanel = lazy(() => import('components/PortfolioPanel'));
 
-
 const OfficeEditorToolsHeader = lazy(() => import('components/Header/OfficeEditorToolsHeader'));
 
 const LazyLoadComponents = {
@@ -98,6 +100,7 @@ const LazyLoadComponents = {
   CreateStampModal,
   PageReplacementModal,
   LinkModal,
+  ExtensionModal,
   FilterAnnotModal,
   PageRedactionModal,
   CalibrationModal,

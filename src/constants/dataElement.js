@@ -71,9 +71,9 @@ const DataElements = {
       INPUT_CONTAINER: 'notesPanelHeader-inputContainer',
       COMMENTS_COUNTER: 'notesPanelHeader-commentsCounter',
       SORT_ROW: 'notesPanelHeader-sortRow',
-      FILTER_ANNOTATION_BUTTON: 'filterAnnotationButton'
+      FILTER_ANNOTATION_BUTTON: 'filterAnnotationButton',
     },
-    ADD_REPLY_ATTACHMENT_BUTTON: 'addReplyAttachmentButton'
+    ADD_REPLY_ATTACHMENT_BUTTON: 'addReplyAttachmentButton',
   },
   MULTITABS_EMPTY_PAGE: 'multiTabsEmptyPage',
 
@@ -132,6 +132,7 @@ const DataElements = {
   VIEWER_CONTROLS_FLYOUT: 'viewControlsFlyout',
 
   // Modals
+  EXTENSION_MODAL: 'extensionModal',
   PAGE_REDACT_MODAL: 'pageRedactionModal',
   LINK_MODAL: 'linkModal',
   LANGUAGE_MODAL: 'languageModal',

@@ -778,7 +778,7 @@ export default {
       { dataElement: 'textStrikeoutToolButton' },
       { dataElement: 'textRedactToolButton' },
       { dataElement: 'linkButton' },
-      { dataElement: 'helloWorldButton' },
+      { dataElement: 'extensionButton' },
     ],
     contextMenuPopup: [
       { dataElement: 'panToolButton' },
