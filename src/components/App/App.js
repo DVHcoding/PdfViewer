@@ -12,6 +12,7 @@ import Accessibility from 'components/Accessibility';
 import Header from 'components/Header';
 import DocumentContainer from 'components/DocumentContainer';
 import RightPanel from 'components/RightPanel';
+import Toast from 'components/Toast';
 import FilePickerHandler from 'components/FilePickerHandler';
 import CopyTextHandler from 'components/CopyTextHandler';
 import PrintHandler from 'components/PrintHandler';
@@ -612,6 +613,7 @@ const App = ({ removeEventHandlers }) => {
         <EmbeddedJSPopup />
       </div>
 
+      <Toast />
       <PrintHandler />
       <FilePickerHandler />
       <CopyTextHandler />

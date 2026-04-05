@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from 'react';
 import classNames from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
 import { Swipeable } from 'react-swipeable';
 
-import Button from 'components/Button';
-import DataElements from 'constants/dataElement';
 import actions from 'actions';
-import selectors from 'selectors';
+import Button from 'components/Button';
+import Icon from 'components/Icon';
+import DataElements from 'constants/dataElement';
 import core from 'core';
+import selectors from 'selectors';
+import { showToast } from 'components/Toast/Toasts';
 
-// Giả lập icon âm thanh bằng ký tự (bạn có thể thay bằng icon chuẩn sau)
-const SoundIcon = () => <span style={{ fontSize: '16px' }}>🔊</span>;
+import { fetchMeaningWord, fetchVocabularies, updateQuickVocabulary } from './fluentezApi';
 
 import './ExtensionModal.scss';
 
@@ -24,38 +25,173 @@ const ExtensionModal = () => {
 
   const [t] = useTranslation();
   const dispatch = useDispatch();
+  const audioRef = useRef(null);
 
-  // State
   const [selectedText, setSelectedText] = useState('');
   const [definition, setDefinition] = useState('');
-  const [soundUkActive, setSoundUkActive] = useState(true);
-  const [soundUsActive, setSoundUsActive] = useState(false);
+
+  const [phonetic, setPhonetic] = useState(null);
+  const [phoneticLoading, setPhoneticLoading] = useState(false);
+
+  const [page, setPage] = useState(1);
+  const [vocabularies, setVocabularies] = useState([]);
+  const [totalCount, setTotalCount] = useState(0);
+  const [vocabLoading, setVocabLoading] = useState(false);
+  const [vocabError, setVocabError] = useState(null);
+
+  const [selectedVocabulary, setSelectedVocabulary] = useState(null);
+  const [submitLoading, setSubmitLoading] = useState(false);
+
+  const closeModal = useCallback(() => {
+    dispatch(actions.closeElement(DataElements.EXTENSION_MODAL));
+  }, [dispatch]);
+
+  const resetState = useCallback(() => {
+    setSelectedText('');
+    setDefinition('');
+    setPhonetic(null);
+    setPage(1);
+    setVocabularies([]);
+    setTotalCount(0);
+    setSelectedVocabulary(null);
+    setVocabError(null);
+  }, []);
+
+  const loadVocabularies = useCallback(async (pageNum) => {
+    setVocabLoading(true);
+    setVocabError(null);
+    try {
+      const result = await fetchVocabularies(pageNum, 7);
+      const newVocabs = result.data || [];
+      setTotalCount(result.totalCount || 0);
+
+      setVocabularies((prev) => {
+        const existingIds = new Set(prev.map((v) => v._id));
+        const unique = newVocabs.filter((v) => !existingIds.has(v._id));
+        return [...prev, ...unique];
+      });
+    } catch (err) {
+      setVocabError(err.message || 'Không thể tải danh sách từ vựng');
+    } finally {
+      setVocabLoading(false);
+    }
+  }, []);
+
+  const loadMeaning = useCallback(async (text) => {
+    if (!text || !text.trim()) {
+      setPhonetic(null);
+      setDefinition('');
+      return;
+    }
+    setPhoneticLoading(true);
+    try {
+      const result = await fetchMeaningWord(text);
+      if (result && result.data) {
+        setPhonetic(result.data);
+        setDefinition(result.data.meaning || '');
+      } else {
+        setPhonetic(null);
+        setDefinition('');
+      }
+    } catch {
+      setPhonetic(null);
+      setDefinition('');
+    } finally {
+      setPhoneticLoading(false);
+    }
+  }, []);
+
+  const playAudio = useCallback((audioUrl) => {
+    if (!audioUrl) {
+      return;
+    }
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    const audio = new Audio(audioUrl);
+    audioRef.current = audio;
+    audio.play().catch((err) => {
+      console.warn('[ExtensionModal] Audio playback failed:', err);
+    });
+  }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!selectedText.trim() || !definition.trim()) {
+      showToast('Thuật ngữ và định nghĩa không được bỏ trống!');
+      return;
+    }
+
+    if (!selectedVocabulary) {
+      showToast('Vui lòng chọn bộ từ vựng để lưu!');
+      return;
+    }
+
+    setSubmitLoading(true);
+    try {
+      await updateQuickVocabulary({
+        vocabulary: { term: selectedText, definition },
+        vocabularyId: selectedVocabulary,
+      });
+      showToast('Thêm từ vựng thành công!');
+      resetState();
+      closeModal();
+    } catch (err) {
+      showToast('Lưu từ vựng thất bại. Vui lòng thử lại!');
+    } finally {
+      setSubmitLoading(false);
+    }
+  };
+
+  const handleCheckboxChange = (id) => {
+    setSelectedVocabulary((prev) => (prev === id ? null : id));
+  };
+
+  const handleLoadMore = () => {
+    setPage((prev) => prev + 1);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   useEffect(() => {
     if (isOpen) {
       const textFromPdf = core.getSelectedText(activeDocumentViewerKey);
-      setSelectedText(textFromPdf || '');
+      const text = (textFromPdf || '').trim();
+      setSelectedText(text);
+
+      setPage(1);
+      setVocabularies([]);
+      loadVocabularies(1);
+
+      if (text) {
+        loadMeaning(text);
+      }
     } else {
-      setSelectedText('');
+      resetState();
     }
-  }, [isOpen, activeDocumentViewerKey]);
+  }, [isOpen, activeDocumentViewerKey, loadVocabularies, loadMeaning, resetState]);
 
-  const closeModal = () => {
-    dispatch(actions.closeElement(DataElements.EXTENSION_MODAL));
-  };
-
-  const handleConfirm = (e) => {
-    e.preventDefault();
-    // console.log('Text đã select:', selectedText);
-    closeModal();
-  };
+  useEffect(() => {
+    if (page > 1) {
+      loadVocabularies(page);
+    }
+  }, [page, loadVocabularies]);
 
   useEffect(() => {
     core.addEventListener('documentUnloaded', closeModal);
     return () => {
       core.removeEventListener('documentUnloaded', closeModal);
     };
-  }, []);
+  }, [closeModal]);
 
   const modalClass = classNames({
     Modal: true,
@@ -68,11 +204,9 @@ const ExtensionModal = () => {
     return null;
   }
 
-  // Dữ liệu giả để test scrollbar
-  const mockVocabularies = Array.from({ length: 10 }, (_, i) => ({
-    _id: `id_${i}`,
-    title: `Bộ từ vựng mẫu số ${i + 1}`,
-  }));
+  const hasSoundUk = Boolean(phonetic && phonetic.soundUk);
+  const hasSoundUs = Boolean(phonetic && phonetic.soundUs);
+  const hasMoreVocabularies = vocabularies.length < totalCount;
 
   return (
     <Swipeable onSwipedUp={closeModal} onSwipedDown={closeModal} preventDefaultTouchmoveEvent>
@@ -90,34 +224,41 @@ const ExtensionModal = () => {
 
           <div className="divider"></div>
 
-          {/* --- BODY CHÍNH CÓ SCROLLBAR --- */}
-          <div className="panel-body custom-scrollbar">
-            <form className="form-container" onSubmit={handleConfirm}>
-              {/* Nút Âm thanh */}
+          <div className="panel-body">
+            <form className="form-container" onSubmit={handleSubmit}>
               <div className="phonetic-group">
                 <div
-                  className={`phonetic-btn ${soundUkActive ? 'active' : ''}`}
-                  onClick={() => setSoundUkActive(!soundUkActive)}
+                  className={`phonetic-btn ${hasSoundUk ? 'sound-active' : 'sound-inactive'}`}
+                  onClick={() => playAudio(phonetic?.soundUk || '')}
                 >
                   <span>UK</span>
-                  <SoundIcon />
+                  <Icon glyph="ic_volume_24px" />
                 </div>
+
                 <div
-                  className={`phonetic-btn ${soundUsActive ? 'active' : ''}`}
-                  onClick={() => setSoundUsActive(!soundUsActive)}
+                  className={`phonetic-btn ${hasSoundUs ? 'sound-active' : 'sound-inactive'}`}
+                  onClick={() => playAudio(phonetic?.soundUs || '')}
                 >
                   <span>US</span>
-                  <SoundIcon />
+                  <Icon glyph="ic_volume_24px" />
                 </div>
-                <span className="phonetic-text">/fəˈnetɪk/</span>
+
+                {phonetic?.ukPhonetic && <span className="phonetic-text">{phonetic.ukPhonetic}</span>}
+                {phonetic?.usPhonetic && <span className="phonetic-text">{phonetic.usPhonetic}</span>}
+
+                {phoneticLoading && (
+                  <span className="phonetic-text" style={{ fontStyle: 'italic' }}>
+                    Đang tra...
+                  </span>
+                )}
               </div>
 
-              {/* 2 Ô Textarea */}
               <div className="textarea-group">
                 <div className="textarea-wrapper">
                   <textarea
                     className="custom-textarea"
                     rows="3"
+                    maxLength={500}
                     value={selectedText}
                     onChange={(e) => setSelectedText(e.target.value)}
                     required
@@ -129,6 +270,7 @@ const ExtensionModal = () => {
                   <textarea
                     className="custom-textarea"
                     rows="3"
+                    maxLength={500}
                     value={definition}
                     onChange={(e) => setDefinition(e.target.value)}
                     required
@@ -137,28 +279,51 @@ const ExtensionModal = () => {
                 </div>
               </div>
 
-              {/* Danh sách Checkbox */}
               <ul className="list-items">
-                {mockVocabularies.map((item) => (
+                {vocabularies.map((item) => (
                   <li key={item._id} className="list-item">
-                    <input type="checkbox" className="custom-checkbox" />
+                    <input
+                      type="checkbox"
+                      className="custom-checkbox"
+                      checked={selectedVocabulary === item._id}
+                      onChange={() => handleCheckboxChange(item._id)}
+                    />
                     <span className="item-title">{item.title}</span>
                   </li>
                 ))}
               </ul>
-              <p className="see-more-btn">See more...</p>
+
+              {vocabError && (
+                <p style={{ fontSize: '13px', color: 'var(--error-text-color)', margin: 0 }}>{vocabError}</p>
+              )}
+
+              {vocabularies.length === 0 && !vocabLoading && !vocabError && (
+                <p style={{ fontSize: '13px', color: 'var(--faded-text)', margin: 0 }}>Bạn chưa tạo bộ từ vựng nào!</p>
+              )}
+
+              {vocabLoading && (
+                <p style={{ fontSize: '13px', color: 'var(--faded-text)', fontStyle: 'italic', margin: 0 }}>
+                  Đang tải...
+                </p>
+              )}
+
+              {!vocabLoading && hasMoreVocabularies && (
+                <p className="see-more-btn" onClick={handleLoadMore}>
+                  See more...
+                </p>
+              )}
             </form>
           </div>
 
           <div className="divider"></div>
 
-          {/* --- FOOTER --- */}
           <div className="footer">
             <Button
               className="ok-button"
               dataElement="extensionSubmitButton"
-              label={t('Thêm vào')}
-              onClick={handleConfirm}
+              label={submitLoading ? t('Đang lưu...') : t('Thêm vào')}
+              onClick={handleSubmit}
+              disabled={submitLoading}
             />
           </div>
         </div>
