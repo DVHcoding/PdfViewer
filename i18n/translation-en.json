@@ -287,7 +287,7 @@
     "signHere": "Sign here",
     "insertTextHere": "Insert text here",
     "imageSignatureAcceptedFileTypes": "Only {{acceptedFileTypes}} are accepted",
-	  "signatureRequired": "A signature and initial is required to continue",
+    "signatureRequired": "A signature and initial is required to continue",
     "enterMeasurement": "Enter measurement between the two points",
     "errorEnterMeasurement": "The number you have entered is invalid, you can enter values like 7.5 or 7 1/2",
     "linkURLorPage": "Link URL or a Page",
@@ -891,38 +891,9 @@
       "November",
       "December"
     ],
-    "monthsShort": [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec"
-    ],
-    "weekdays": [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ],
-    "weekdaysShort": [
-      "Sun",
-      "Mon",
-      "Tue",
-      "Wed",
-      "Thu",
-      "Fri",
-      "Sat"
-    ],
+    "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+    "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     "today": "Today",
     "invalidDateTime": "Invalid Date/Time: Input should match format"
   },
@@ -1349,5 +1320,34 @@
   "rubberStampPanel": {
     "header": "Stamps",
     "standard": "Standard Stamps"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Failed to load vocabulary list",
+      "emptyFields": "Term and definition cannot be empty!",
+      "noVocabularySelected": "Please select a vocabulary set to save!",
+      "saveFailed": "Failed to save vocabulary. Please try again!"
+    },
+    "success": {
+      "save": "Vocabulary added successfully!"
+    },
+    "loading": {
+      "dictionary": "Searching...",
+      "general": "Loading..."
+    },
+    "label": {
+      "term": "Term",
+      "definition": "Definition"
+    },
+    "empty": {
+      "noVocabulary": "You haven't created any vocabulary sets yet!"
+    },
+    "action": {
+      "seeMore": "See more...",
+      "saving": "Saving...",
+      "add": "Add"
+    }
   }
 }
+

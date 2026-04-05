@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Tem",
     "standard": "Tem tiêu chuẩn"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Không thể tải danh sách từ vựng",
+      "emptyFields": "Thuật ngữ và định nghĩa không được bỏ trống!",
+      "noVocabularySelected": "Vui lòng chọn bộ từ vựng để lưu!",
+      "saveFailed": "Lưu từ vựng thất bại. Vui lòng thử lại!"
+    },
+    "success": {
+      "save": "Thêm từ vựng thành công!"
+    },
+    "loading": {
+      "dictionary": "Đang tra...",
+      "general": "Đang tải..."
+    },
+    "label": {
+      "term": "Thuật ngữ",
+      "definition": "Định nghĩa"
+    },
+    "empty": {
+      "noVocabulary": "Bạn chưa tạo bộ từ vựng nào!"
+    },
+    "action": {
+      "seeMore": "See more...",
+      "saving": "Đang lưu...",
+      "add": "Thêm vào"
+    }
   }
 }
+

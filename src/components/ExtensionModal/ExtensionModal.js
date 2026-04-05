@@ -57,25 +57,28 @@ const ExtensionModal = () => {
     setVocabError(null);
   }, []);
 
-  const loadVocabularies = useCallback(async (pageNum) => {
-    setVocabLoading(true);
-    setVocabError(null);
-    try {
-      const result = await fetchVocabularies(pageNum, 7);
-      const newVocabs = result.data || [];
-      setTotalCount(result.totalCount || 0);
+  const loadVocabularies = useCallback(
+    async (pageNum) => {
+      setVocabLoading(true);
+      setVocabError(null);
+      try {
+        const result = await fetchVocabularies(pageNum, 7);
+        const newVocabs = result.data || [];
+        setTotalCount(result.totalCount || 0);
 
-      setVocabularies((prev) => {
-        const existingIds = new Set(prev.map((v) => v._id));
-        const unique = newVocabs.filter((v) => !existingIds.has(v._id));
-        return [...prev, ...unique];
-      });
-    } catch (err) {
-      setVocabError(err.message || 'Không thể tải danh sách từ vựng');
-    } finally {
-      setVocabLoading(false);
-    }
-  }, []);
+        setVocabularies((prev) => {
+          const existingIds = new Set(prev.map((v) => v._id));
+          const unique = newVocabs.filter((v) => !existingIds.has(v._id));
+          return [...prev, ...unique];
+        });
+      } catch (err) {
+        setVocabError(t('fluentez.error.loadVocabFailed'));
+      } finally {
+        setVocabLoading(false);
+      }
+    },
+    [t],
+  );
 
   const loadMeaning = useCallback(async (text) => {
     if (!text || !text.trim()) {
@@ -120,12 +123,12 @@ const ExtensionModal = () => {
     e.preventDefault();
 
     if (!selectedText.trim() || !definition.trim()) {
-      showToast('Thuật ngữ và định nghĩa không được bỏ trống!');
+      showToast(t('fluentez.error.emptyFields'));
       return;
     }
 
     if (!selectedVocabulary) {
-      showToast('Vui lòng chọn bộ từ vựng để lưu!');
+      showToast(t('fluentez.error.noVocabularySelected'));
       return;
     }
 
@@ -135,11 +138,11 @@ const ExtensionModal = () => {
         vocabulary: { term: selectedText, definition },
         vocabularyId: selectedVocabulary,
       });
-      showToast('Thêm từ vựng thành công!');
+      showToast(t('fluentez.success.save'));
       resetState();
       closeModal();
     } catch (err) {
-      showToast('Lưu từ vựng thất bại. Vui lòng thử lại!');
+      showToast(t('fluentez.error.saveFailed'));
     } finally {
       setSubmitLoading(false);
     }
@@ -214,7 +217,6 @@ const ExtensionModal = () => {
         <div className="container" onMouseDown={(e) => e.stopPropagation()}>
           <div className="swipe-indicator" />
 
-          {/* --- HEADER --- */}
           <div className="header-container">
             <div className="header">
               <p>Fluentez-extension</p>
@@ -248,7 +250,7 @@ const ExtensionModal = () => {
 
                 {phoneticLoading && (
                   <span className="phonetic-text" style={{ fontStyle: 'italic' }}>
-                    Đang tra...
+                    {t('fluentez.loading.dictionary')}
                   </span>
                 )}
               </div>
@@ -263,7 +265,7 @@ const ExtensionModal = () => {
                     onChange={(e) => setSelectedText(e.target.value)}
                     required
                   />
-                  <p className="textarea-label">Thuật ngữ</p>
+                  <p className="textarea-label">{t('fluentez.label.term')}</p>
                 </div>
 
                 <div className="textarea-wrapper">
@@ -275,7 +277,7 @@ const ExtensionModal = () => {
                     onChange={(e) => setDefinition(e.target.value)}
                     required
                   />
-                  <p className="textarea-label">Định nghĩa</p>
+                  <p className="textarea-label">{t('fluentez.label.definition')}</p>
                 </div>
               </div>
 
@@ -298,18 +300,20 @@ const ExtensionModal = () => {
               )}
 
               {vocabularies.length === 0 && !vocabLoading && !vocabError && (
-                <p style={{ fontSize: '13px', color: 'var(--faded-text)', margin: 0 }}>Bạn chưa tạo bộ từ vựng nào!</p>
+                <p style={{ fontSize: '13px', color: 'var(--faded-text)', margin: 0 }}>
+                  {t('fluentez.empty.noVocabulary')}
+                </p>
               )}
 
               {vocabLoading && (
                 <p style={{ fontSize: '13px', color: 'var(--faded-text)', fontStyle: 'italic', margin: 0 }}>
-                  Đang tải...
+                  {t('fluentez.loading.general')}
                 </p>
               )}
 
               {!vocabLoading && hasMoreVocabularies && (
                 <p className="see-more-btn" onClick={handleLoadMore}>
-                  See more...
+                  {t('fluentez.action.seeMore')}
                 </p>
               )}
             </form>
@@ -321,7 +325,7 @@ const ExtensionModal = () => {
             <Button
               className="ok-button"
               dataElement="extensionSubmitButton"
-              label={submitLoading ? t('Đang lưu...') : t('Thêm vào')}
+              label={submitLoading ? t('fluentez.action.saving') : t('fluentez.action.add')}
               onClick={handleSubmit}
               disabled={submitLoading}
             />
