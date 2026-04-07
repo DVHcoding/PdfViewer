@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Bélyegek",
     "standard": "Szabványos bélyegek"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Nem sikerült betölteni a szókincslistát",
+      "emptyFields": "A kifejezés és a definíció nem lehet üres!",
+      "noVocabularySelected": "Válasszon ki egy szókészletet a mentéshez!",
+      "saveFailed": "A szókincs mentése sikertelen. Próbálja újra!"
+    },
+    "success": {
+      "save": "A szókincs sikeresen hozzáadva!"
+    },
+    "loading": {
+      "dictionary": "Keresés...",
+      "general": "Betöltés..."
+    },
+    "label": {
+      "term": "Kifejezés",
+      "definition": "Definíció"
+    },
+    "empty": {
+      "noVocabulary": "Még nem hozott létre szókészleteket!"
+    },
+    "action": {
+      "seeMore": "Továbbiak...",
+      "saving": "Mentés...",
+      "add": "Hozzáadás"
+    }
   }
 }
+

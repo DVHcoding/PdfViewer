@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Sellos",
     "standard": "Sellos estándar"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "No se pudo cargar la lista de vocabulario",
+      "emptyFields": "¡El término y la definición no pueden estar vacíos!",
+      "noVocabularySelected": "¡Seleccione un conjunto de vocabulario para guardar!",
+      "saveFailed": "Error al guardar el vocabulario. ¡Inténtelo de nuevo!"
+    },
+    "success": {
+      "save": "¡Vocabulario añadido con éxito!"
+    },
+    "loading": {
+      "dictionary": "Buscando...",
+      "general": "Cargando..."
+    },
+    "label": {
+      "term": "Término",
+      "definition": "Definición"
+    },
+    "empty": {
+      "noVocabulary": "¡Aún no has creado ningún conjunto de vocabulario!"
+    },
+    "action": {
+      "seeMore": "Ver más...",
+      "saving": "Guardando...",
+      "add": "Añadir"
+    }
   }
 }
+

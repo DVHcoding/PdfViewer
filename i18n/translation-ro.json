@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Timbre",
     "standard": "Timbre standard"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Nu s-a putut încărca lista de vocabular",
+      "emptyFields": "Termenul și definiția nu pot fi goale!",
+      "noVocabularySelected": "Selectați un set de vocabular pentru salvare!",
+      "saveFailed": "Salvarea vocabularului a eșuat. Încercați din nou!"
+    },
+    "success": {
+      "save": "Vocabular adăugat cu succes!"
+    },
+    "loading": {
+      "dictionary": "Se caută...",
+      "general": "Se încarcă..."
+    },
+    "label": {
+      "term": "Termen",
+      "definition": "Definiție"
+    },
+    "empty": {
+      "noVocabulary": "Nu ați creat încă niciun set de vocabular!"
+    },
+    "action": {
+      "seeMore": "Vezi mai mult...",
+      "saving": "Se salvează...",
+      "add": "Adaugă"
+    }
   }
 }
+

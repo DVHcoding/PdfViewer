@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "切手",
     "standard": "標準切手"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "語彙リストの読み込みに失敗しました",
+      "emptyFields": "用語と定義は空にできません！",
+      "noVocabularySelected": "保存する語彙セットを選択してください！",
+      "saveFailed": "語彙の保存に失敗しました。もう一度お試しください！"
+    },
+    "success": {
+      "save": "語彙が正常に追加されました！"
+    },
+    "loading": {
+      "dictionary": "検索中...",
+      "general": "読み込み中..."
+    },
+    "label": {
+      "term": "用語",
+      "definition": "定義"
+    },
+    "empty": {
+      "noVocabulary": "まだ語彙セットを作成していません！"
+    },
+    "action": {
+      "seeMore": "もっと見る...",
+      "saving": "保存中...",
+      "add": "追加"
+    }
   }
 }
+

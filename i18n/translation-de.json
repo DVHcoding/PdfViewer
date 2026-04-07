@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Briefmarken",
     "standard": "Standardstempel"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Vokabelliste konnte nicht geladen werden",
+      "emptyFields": "Begriff und Definition dürfen nicht leer sein!",
+      "noVocabularySelected": "Bitte wählen Sie ein Vokabelset zum Speichern aus!",
+      "saveFailed": "Speichern der Vokabeln fehlgeschlagen. Bitte versuchen Sie es erneut!"
+    },
+    "success": {
+      "save": "Vokabel erfolgreich hinzugefügt!"
+    },
+    "loading": {
+      "dictionary": "Suche...",
+      "general": "Wird geladen..."
+    },
+    "label": {
+      "term": "Begriff",
+      "definition": "Definition"
+    },
+    "empty": {
+      "noVocabulary": "Sie haben noch keine Vokabelsets erstellt!"
+    },
+    "action": {
+      "seeMore": "Mehr anzeigen...",
+      "saving": "Speichern...",
+      "add": "Hinzufügen"
+    }
   }
 }
+

@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Perangko",
     "standard": "Perangko Standar"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Gagal memuat daftar kosakata",
+      "emptyFields": "Istilah dan definisi tidak boleh kosong!",
+      "noVocabularySelected": "Pilih set kosakata untuk disimpan!",
+      "saveFailed": "Gagal menyimpan kosakata. Silakan coba lagi!"
+    },
+    "success": {
+      "save": "Kosakata berhasil ditambahkan!"
+    },
+    "loading": {
+      "dictionary": "Mencari...",
+      "general": "Memuat..."
+    },
+    "label": {
+      "term": "Istilah",
+      "definition": "Definisi"
+    },
+    "empty": {
+      "noVocabulary": "Anda belum membuat set kosakata apa pun!"
+    },
+    "action": {
+      "seeMore": "Lihat lebih banyak...",
+      "saving": "Menyimpan...",
+      "add": "Tambah"
+    }
   }
 }
+

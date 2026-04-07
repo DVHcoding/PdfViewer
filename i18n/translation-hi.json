@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "टिकटों",
     "standard": "मानक टिकटें"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "शब्दावली सूची लोड करने में विफल",
+      "emptyFields": "शब्द और परिभाषा खाली नहीं हो सकते!",
+      "noVocabularySelected": "सहेजने के लिए शब्दावली सेट चुनें!",
+      "saveFailed": "शब्दावली सहेजने में विफल। कृपया पुनः प्रयास करें!"
+    },
+    "success": {
+      "save": "शब्दावली सफलतापूर्वक जोड़ी गई!"
+    },
+    "loading": {
+      "dictionary": "खोज रहे हैं...",
+      "general": "लोड हो रहा है..."
+    },
+    "label": {
+      "term": "शब्द",
+      "definition": "परिभाषा"
+    },
+    "empty": {
+      "noVocabulary": "आपने अभी तक कोई शब्दावली सेट नहीं बनाया है!"
+    },
+    "action": {
+      "seeMore": "और देखें...",
+      "saving": "सहेजा जा रहा है...",
+      "add": "जोड़ें"
+    }
   }
 }
+

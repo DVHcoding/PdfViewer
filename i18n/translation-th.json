@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "แสตมป์",
     "standard": "แสตมป์มาตรฐาน"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "ไม่สามารถโหลดรายการคำศัพท์ได้",
+      "emptyFields": "คำศัพท์และคำจำกัดความต้องไม่ว่าง!",
+      "noVocabularySelected": "โปรดเลือกชุดคำศัพท์เพื่อบันทึก!",
+      "saveFailed": "บันทึกคำศัพท์ล้มเหลว โปรดลองอีกครั้ง!"
+    },
+    "success": {
+      "save": "เพิ่มคำศัพท์เรียบร้อยแล้ว!"
+    },
+    "loading": {
+      "dictionary": "กำลังค้นหา...",
+      "general": "กำลังโหลด..."
+    },
+    "label": {
+      "term": "คำศัพท์",
+      "definition": "คำจำกัดความ"
+    },
+    "empty": {
+      "noVocabulary": "คุณยังไม่ได้สร้างชุดคำศัพท์ใด ๆ!"
+    },
+    "action": {
+      "seeMore": "ดูเพิ่มเติม...",
+      "saving": "กำลังบันทึก...",
+      "add": "เพิ่ม"
+    }
   }
 }
+

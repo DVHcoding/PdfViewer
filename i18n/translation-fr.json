@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Timbres",
     "standard": "Timbres standards"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Échec du chargement de la liste de vocabulaire",
+      "emptyFields": "Le terme et la définition ne peuvent pas être vides !",
+      "noVocabularySelected": "Veuillez sélectionner un ensemble de vocabulaire à enregistrer !",
+      "saveFailed": "Échec de l'enregistrement du vocabulaire. Veuillez réessayer !"
+    },
+    "success": {
+      "save": "Vocabulaire ajouté avec succès !"
+    },
+    "loading": {
+      "dictionary": "Recherche...",
+      "general": "Chargement..."
+    },
+    "label": {
+      "term": "Terme",
+      "definition": "Définition"
+    },
+    "empty": {
+      "noVocabulary": "Vous n'avez pas encore créé d'ensemble de vocabulaire !"
+    },
+    "action": {
+      "seeMore": "Voir plus...",
+      "saving": "Enregistrement...",
+      "add": "Ajouter"
+    }
   }
 }
+

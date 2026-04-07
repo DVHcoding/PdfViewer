@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "邮票",
     "standard": "标准邮票"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "加载词汇列表失败",
+      "emptyFields": "术语和定义不能为空！",
+      "noVocabularySelected": "请选择要保存的词汇集！",
+      "saveFailed": "保存词汇失败。请重试！"
+    },
+    "success": {
+      "save": "词汇添加成功！"
+    },
+    "loading": {
+      "dictionary": "搜索中...",
+      "general": "加载中..."
+    },
+    "label": {
+      "term": "术语",
+      "definition": "定义"
+    },
+    "empty": {
+      "noVocabulary": "您还没有创建任何词汇集！"
+    },
+    "action": {
+      "seeMore": "查看更多...",
+      "saving": "保存中...",
+      "add": "添加"
+    }
   }
 }
+

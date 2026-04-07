@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Známky",
     "standard": "Standardní razítka"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Nepodařilo se načíst seznam slovní zásoby",
+      "emptyFields": "Termín a definice nemohou být prázdné!",
+      "noVocabularySelected": "Vyberte prosím sadu slovní zásoby pro uložení!",
+      "saveFailed": "Uložení slovní zásoby se nezdařilo. Zkuste to znovu!"
+    },
+    "success": {
+      "save": "Slovní zásoba byla úspěšně přidána!"
+    },
+    "loading": {
+      "dictionary": "Vyhledávání...",
+      "general": "Načítání..."
+    },
+    "label": {
+      "term": "Termín",
+      "definition": "Definice"
+    },
+    "empty": {
+      "noVocabulary": "Zatím jste nevytvořili žádné sady slovní zásoby!"
+    },
+    "action": {
+      "seeMore": "Zobrazit více...",
+      "saving": "Ukládání...",
+      "add": "Přidat"
+    }
   }
 }
+

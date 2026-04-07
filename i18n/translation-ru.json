@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Марки",
     "standard": "Стандартные марки"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Не удалось загрузить список словаря",
+      "emptyFields": "Термин и определение не могут быть пустыми!",
+      "noVocabularySelected": "Выберите набор словаря для сохранения!",
+      "saveFailed": "Не удалось сохранить словарь. Попробуйте снова!"
+    },
+    "success": {
+      "save": "Словарь успешно добавлен!"
+    },
+    "loading": {
+      "dictionary": "Поиск...",
+      "general": "Загрузка..."
+    },
+    "label": {
+      "term": "Термин",
+      "definition": "Определение"
+    },
+    "empty": {
+      "noVocabulary": "Вы еще не создали ни одного набора словаря!"
+    },
+    "action": {
+      "seeMore": "Подробнее...",
+      "saving": "Сохранение...",
+      "add": "Добавить"
+    }
   }
 }
+

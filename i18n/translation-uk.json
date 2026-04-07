@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Марки",
     "standard": "Стандартні штампи"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Не вдалося завантажити список словника",
+      "emptyFields": "Термін і визначення не можуть бути порожніми!",
+      "noVocabularySelected": "Виберіть набір словника для збереження!",
+      "saveFailed": "Не вдалося зберегти словник. Спробуйте ще раз!"
+    },
+    "success": {
+      "save": "Словник успішно додано!"
+    },
+    "loading": {
+      "dictionary": "Пошук...",
+      "general": "Завантаження..."
+    },
+    "label": {
+      "term": "Термін",
+      "definition": "Визначення"
+    },
+    "empty": {
+      "noVocabulary": "Ви ще не створили жодного набору словника!"
+    },
+    "action": {
+      "seeMore": "Детальніше...",
+      "saving": "Збереження...",
+      "add": "Додати"
+    }
   }
 }
+

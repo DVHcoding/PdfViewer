@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Francobolli",
     "standard": "Francobolli standard"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Impossibile caricare l'elenco del vocabolario",
+      "emptyFields": "Termine e definizione non possono essere vuoti!",
+      "noVocabularySelected": "Seleziona un set di vocabolario da salvare!",
+      "saveFailed": "Salvataggio del vocabolario non riuscito. Riprova!"
+    },
+    "success": {
+      "save": "Vocabolario aggiunto con successo!"
+    },
+    "loading": {
+      "dictionary": "Ricerca...",
+      "general": "Caricamento..."
+    },
+    "label": {
+      "term": "Termine",
+      "definition": "Definizione"
+    },
+    "empty": {
+      "noVocabulary": "Non hai ancora creato alcun set di vocabolario!"
+    },
+    "action": {
+      "seeMore": "Vedi altro...",
+      "saving": "Salvataggio...",
+      "add": "Aggiungi"
+    }
   }
 }
+

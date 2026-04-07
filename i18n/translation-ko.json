@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "우표",
     "standard": "표준 스탬프"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "단어 목록을 불러오지 못했습니다",
+      "emptyFields": "단어와 정의는 비워둘 수 없습니다!",
+      "noVocabularySelected": "저장할 단어 세트를 선택하세요!",
+      "saveFailed": "단어 저장에 실패했습니다. 다시 시도하세요!"
+    },
+    "success": {
+      "save": "단어가 성공적으로 추가되었습니다!"
+    },
+    "loading": {
+      "dictionary": "검색 중...",
+      "general": "로딩 중..."
+    },
+    "label": {
+      "term": "단어",
+      "definition": "정의"
+    },
+    "empty": {
+      "noVocabulary": "아직 단어 세트를 만들지 않았습니다!"
+    },
+    "action": {
+      "seeMore": "더 보기...",
+      "saving": "저장 중...",
+      "add": "추가"
+    }
   }
 }
+

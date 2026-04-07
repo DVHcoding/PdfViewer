@@ -161,6 +161,11 @@ const App = ({ removeEventHandlers }) => {
   }, [customizableUI]);
 
   useEffect(() => {
+    // Tăng chất lượng ảnh nhẹ để rõ nét hơn, nhưng để trình duyệt tự làm mượt (không răng cưa nữa)
+    if (window.Core && window.Core.setCanvasMultiplier) {
+      window.Core.setCanvasMultiplier(window.devicePixelRatio * 1.2);
+    }
+
     // To avoid race condition with window.dispatchEvent firing before window.addEventListener
     setTimeout(() => {
       fireEvent(Events.VIEWER_LOADED);

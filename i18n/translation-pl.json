@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Znaczki",
     "standard": "Standardowe znaczki"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Nie udało się załadować listy słownictwa",
+      "emptyFields": "Termin i definicja nie mogą być puste!",
+      "noVocabularySelected": "Wybierz zestaw słownictwa do zapisania!",
+      "saveFailed": "Nie udało się zapisać słownictwa. Spróbuj ponownie!"
+    },
+    "success": {
+      "save": "Słownictwo zostało pomyślnie dodane!"
+    },
+    "loading": {
+      "dictionary": "Wyszukiwanie...",
+      "general": "Ładowanie..."
+    },
+    "label": {
+      "term": "Termin",
+      "definition": "Definicja"
+    },
+    "empty": {
+      "noVocabulary": "Nie utworzono jeszcze żadnych zestawów słownictwa!"
+    },
+    "action": {
+      "seeMore": "Zobacz więcej...",
+      "saving": "Zapisywanie...",
+      "add": "Dodaj"
+    }
   }
 }
+

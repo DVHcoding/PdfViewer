@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "setem",
     "standard": "Setem Standard"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Gagal memuat senarai kosa kata",
+      "emptyFields": "Istilah dan definisi tidak boleh kosong!",
+      "noVocabularySelected": "Sila pilih set kosa kata untuk disimpan!",
+      "saveFailed": "Gagal menyimpan kosa kata. Sila cuba lagi!"
+    },
+    "success": {
+      "save": "Kosa kata berjaya ditambah!"
+    },
+    "loading": {
+      "dictionary": "Mencari...",
+      "general": "Memuatkan..."
+    },
+    "label": {
+      "term": "Istilah",
+      "definition": "Definisi"
+    },
+    "empty": {
+      "noVocabulary": "Anda belum mencipta sebarang set kosa kata!"
+    },
+    "action": {
+      "seeMore": "Lihat lagi...",
+      "saving": "Menyimpan...",
+      "add": "Tambah"
+    }
   }
 }
+

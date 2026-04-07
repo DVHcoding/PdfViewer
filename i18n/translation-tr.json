@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Pullar",
     "standard": "Standart Pullar"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Kelime listesi yüklenemedi",
+      "emptyFields": "Terim ve tanım boş olamaz!",
+      "noVocabularySelected": "Kaydetmek için bir kelime seti seçin!",
+      "saveFailed": "Kelime kaydedilemedi. Lütfen tekrar deneyin!"
+    },
+    "success": {
+      "save": "Kelime başarıyla eklendi!"
+    },
+    "loading": {
+      "dictionary": "Aranıyor...",
+      "general": "Yükleniyor..."
+    },
+    "label": {
+      "term": "Terim",
+      "definition": "Tanım"
+    },
+    "empty": {
+      "noVocabulary": "Henüz hiçbir kelime seti oluşturmadınız!"
+    },
+    "action": {
+      "seeMore": "Daha fazla...",
+      "saving": "Kaydediliyor...",
+      "add": "Ekle"
+    }
   }
 }
+

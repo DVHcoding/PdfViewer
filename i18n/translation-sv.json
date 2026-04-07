@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Frimärken",
     "standard": "Standardstämplar"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Det gick inte att ladda vokabulärlistan",
+      "emptyFields": "Term och definition får inte vara tomma!",
+      "noVocabularySelected": "Välj en vokabulärlista att spara!",
+      "saveFailed": "Det gick inte att spara vokabulären. Försök igen!"
+    },
+    "success": {
+      "save": "Vokabulär tillagd!"
+    },
+    "loading": {
+      "dictionary": "Söker...",
+      "general": "Laddar..."
+    },
+    "label": {
+      "term": "Term",
+      "definition": "Definition"
+    },
+    "empty": {
+      "noVocabulary": "Du har ännu inte skapat några vokabulärlistor!"
+    },
+    "action": {
+      "seeMore": "Visa mer...",
+      "saving": "Sparar...",
+      "add": "Lägg till"
+    }
   }
 }
+

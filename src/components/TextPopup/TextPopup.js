@@ -136,21 +136,6 @@ const TextPopup = ({ t, selectedTextQuads }) => {
             />
             <ActionButton
               className="main-menu-button"
-              dataElement="textSquigglyToolButton"
-              label={isRightClickAnnotationPopupEnabled ? 'annotation.squiggly' : ''}
-              title={!isRightClickAnnotationPopupEnabled ? 'annotation.squiggly' : ''}
-              img="icon-tool-text-manipulation-squiggly"
-              onClick={() =>
-                createTextAnnotationAndSelect(
-                  dispatch,
-                  window.Core.Annotations.TextSquigglyAnnotation,
-                  activeDocumentViewerKey,
-                )
-              }
-              role="option"
-            />
-            <ActionButton
-              className="main-menu-button"
               label={isRightClickAnnotationPopupEnabled ? 'annotation.strikeout' : ''}
               title={!isRightClickAnnotationPopupEnabled ? 'annotation.strikeout' : ''}
               img="icon-tool-text-manipulation-strikethrough"

@@ -26,6 +26,8 @@ const ExtensionModal = () => {
   const [t] = useTranslation();
   const dispatch = useDispatch();
   const audioRef = useRef(null);
+  const isMounted = useRef(false);
+  const audioCache = useRef({});
 
   const [selectedText, setSelectedText] = useState('');
   const [definition, setDefinition] = useState('');
@@ -63,18 +65,25 @@ const ExtensionModal = () => {
       setVocabError(null);
       try {
         const result = await fetchVocabularies(pageNum, 7);
+        if (!isMounted.current) {
+          return;
+        }
         const newVocabs = result.data || [];
         setTotalCount(result.totalCount || 0);
-
         setVocabularies((prev) => {
           const existingIds = new Set(prev.map((v) => v._id));
           const unique = newVocabs.filter((v) => !existingIds.has(v._id));
           return [...prev, ...unique];
         });
       } catch (err) {
+        if (!isMounted.current) {
+          return;
+        }
         setVocabError(t('fluentez.error.loadVocabFailed'));
       } finally {
-        setVocabLoading(false);
+        if (isMounted.current) {
+          setVocabLoading(false);
+        }
       }
     },
     [t],
@@ -89,6 +98,9 @@ const ExtensionModal = () => {
     setPhoneticLoading(true);
     try {
       const result = await fetchMeaningWord(text);
+      if (!isMounted.current) {
+        return;
+      }
       if (result && result.data) {
         setPhonetic(result.data);
         setDefinition(result.data.meaning || '');
@@ -97,10 +109,15 @@ const ExtensionModal = () => {
         setDefinition('');
       }
     } catch {
+      if (!isMounted.current) {
+        return;
+      }
       setPhonetic(null);
       setDefinition('');
     } finally {
-      setPhoneticLoading(false);
+      if (isMounted.current) {
+        setPhoneticLoading(false);
+      }
     }
   }, []);
 
@@ -108,12 +125,16 @@ const ExtensionModal = () => {
     if (!audioUrl) {
       return;
     }
+
     if (audioRef.current) {
       audioRef.current.pause();
-      audioRef.current = null;
+      audioRef.current.currentTime = 0;
     }
-    const audio = new Audio(audioUrl);
+
+    // Dùng cached audio nếu có, không thì tạo mới
+    const audio = audioCache.current[audioUrl] || new Audio(audioUrl);
     audioRef.current = audio;
+    audio.currentTime = 0;
     audio.play().catch((err) => {
       console.warn('[ExtensionModal] Audio playback failed:', err);
     });
@@ -121,30 +142,35 @@ const ExtensionModal = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!selectedText.trim() || !definition.trim()) {
       showToast(t('fluentez.error.emptyFields'));
       return;
     }
-
     if (!selectedVocabulary) {
       showToast(t('fluentez.error.noVocabularySelected'));
       return;
     }
-
     setSubmitLoading(true);
     try {
       await updateQuickVocabulary({
         vocabulary: { term: selectedText, definition },
         vocabularyId: selectedVocabulary,
       });
+      if (!isMounted.current) {
+        return;
+      }
       showToast(t('fluentez.success.save'));
       resetState();
       closeModal();
     } catch (err) {
+      if (!isMounted.current) {
+        return;
+      }
       showToast(t('fluentez.error.saveFailed'));
     } finally {
-      setSubmitLoading(false);
+      if (isMounted.current) {
+        setSubmitLoading(false);
+      }
     }
   };
 
@@ -155,6 +181,32 @@ const ExtensionModal = () => {
   const handleLoadMore = () => {
     setPage((prev) => prev + 1);
   };
+
+  useEffect(() => {
+    if (!phonetic) {
+      return;
+    }
+
+    const preload = (url) => {
+      if (!url || audioCache.current[url]) {
+        return;
+      }
+      const audio = new Audio(url);
+      audio.preload = 'auto';
+      audioCache.current[url] = audio;
+    };
+
+    preload(phonetic.soundUk);
+    preload(phonetic.soundUs);
+  }, [phonetic]);
+
+  useEffect(() => {
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+      audioCache.current = {};
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -219,7 +271,7 @@ const ExtensionModal = () => {
 
           <div className="header-container">
             <div className="header">
-              <p>Fluentez-extension</p>
+              <p>{t('fluentez.title')}</p>
               <Button img="icon-close" onClick={closeModal} title="action.close" />
             </div>
           </div>

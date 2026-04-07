@@ -1349,5 +1349,34 @@
   "rubberStampPanel": {
     "header": "Stempels",
     "standard": "Standaard postzegels"
+  },
+  "fluentez": {
+    "title": "Fluentez-extension",
+    "error": {
+      "loadVocabFailed": "Laden van woordenlijst mislukt",
+      "emptyFields": "Term en definitie mogen niet leeg zijn!",
+      "noVocabularySelected": "Selecteer een woordenlijst om op te slaan!",
+      "saveFailed": "Opslaan van woordenlijst mislukt. Probeer opnieuw!"
+    },
+    "success": {
+      "save": "Woorden succesvol toegevoegd!"
+    },
+    "loading": {
+      "dictionary": "Zoeken...",
+      "general": "Laden..."
+    },
+    "label": {
+      "term": "Term",
+      "definition": "Definitie"
+    },
+    "empty": {
+      "noVocabulary": "Je hebt nog geen woordenlijsten gemaakt!"
+    },
+    "action": {
+      "seeMore": "Meer bekijken...",
+      "saving": "Opslaan...",
+      "add": "Toevoegen"
+    }
   }
 }
+
