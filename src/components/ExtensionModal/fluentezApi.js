@@ -27,7 +27,7 @@ export const clearCache = (keyPrefix) => {
   }
 };
 
-const BASE_URL = 'http://localhost:4000/api/v1';
+const BASE_URL = 'https://api.fluentez.com/api/v1';
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
