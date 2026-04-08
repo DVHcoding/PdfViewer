@@ -264,7 +264,7 @@ const ExtensionModal = () => {
   const hasMoreVocabularies = vocabularies.length < totalCount;
 
   return (
-    <Swipeable onSwipedUp={closeModal} onSwipedDown={closeModal} preventDefaultTouchmoveEvent>
+    <Swipeable preventDefaultTouchmoveEvent>
       <div className={modalClass} data-element={DataElements.EXTENSION_MODAL} onMouseDown={closeModal}>
         <div className="container" onMouseDown={(e) => e.stopPropagation()}>
           <div className="swipe-indicator" />
